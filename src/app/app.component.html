@@ -1,1 +1,10 @@
+<p-button type="text" (click)="display = true" icon="pi pi-plus" label="Opciones"></p-button>
+<p-sidebar [(visible)]="display" position="top">
+    <div class="botones">
+        <p-button routerLink="/language/angular" routerLinkActive="active">Angular</p-button>
+        <p-button routerLink="/language/java" routerLinkActive="active">Java</p-button>
+        <p-button routerLink="/language/reactnative" routerLinkActive="active">React-Native</p-button>
+        <p-button routerLink="/language/database" routerLinkActive="active">Base-De-Datos</p-button>
+    </div>
+</p-sidebar>
 <router-outlet></router-outlet>

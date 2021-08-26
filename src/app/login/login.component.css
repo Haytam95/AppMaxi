@@ -1,0 +1,20 @@
+.general{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.p-float-label{
+  margin-top: 2vw;
+}
+
+.boton .general{ 
+  margin-left: 5vw;
+}
+
+.p-card-footer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

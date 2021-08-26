@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'MaxiApp';
+  public display: boolean;
+  public fondo: string;
+  public titulo: string;
+
 }
