@@ -4,7 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { SidebarModule } from 'primeng/sidebar';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
 
 
 import { AppComponent } from './app.component';
@@ -39,6 +41,7 @@ const routes: Routes = [
     ButtonModule,
     SidebarModule,
     RouterModule.forRoot(routes),
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   exports: [RouterModule],
   providers: [],
