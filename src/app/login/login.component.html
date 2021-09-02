@@ -1,5 +1,7 @@
-<p-card header="Login"
-    [style]="{ 'display': 'flex', 'justify-content': 'center', 'width': '360px', 'margin': '0 auto', 'margin-top': '15%'}">
+<p-card [style]="{ 'display': 'flex', 'justify-content': 'center', 'width': '360px', 'margin': '0 auto'}">
+    
+            <h3 style="justify-content: center; display: flex;">Login</h3>
+    
     <ng-template pTemplate="content">
         <div class="general">
             <span class="p-float-label">
@@ -13,7 +15,8 @@
         </div>
     </ng-template>
     <ng-template pTemplate="footer">
-        <p-button class="boton" label="Ingresar" icon="pi pi-check" routerLink="/language/angular"
-            routerLinkActive="active" (click)="login()"></p-button>
+        <div style="justify-content: center; display: flex;">
+            <p-button class="boton" label="Ingresar" icon="pi pi-check" (click)="login()"></p-button>
+        </div>
     </ng-template>
 </p-card>

@@ -7,7 +7,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
-
+import {DialogModule} from 'primeng/dialog';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -17,8 +17,7 @@ import { ReactnativeComponent } from './reactnative/reactnative.component';
 import { DatabaseComponent } from './database/database.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/language/angular', pathMatch: 'full' },
   { path: 'language/angular', component: AngularComponent },
   { path: 'language/java', component: JavaComponent },
   { path: 'language/reactnative', component: ReactnativeComponent },
@@ -39,6 +38,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     CardModule,
     ButtonModule,
+    DialogModule,
     SidebarModule,
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebaseConfig)
