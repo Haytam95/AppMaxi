@@ -5,8 +5,8 @@
     <ng-template pTemplate="content">
         <div class="general">
             <span class="p-float-label">
-                <input id="float-input" type="text" pInputText [(ngModel)]="usuario">
-                <label for="float-input">Usuario</label>
+                <input id="float-input" type="text" pInputText [(ngModel)]="email">
+                <label for="float-input">Email</label>
             </span>
             <span class="p-float-label">
                 <input id="float-input" type="text" pInputText [(ngModel)]="password">
@@ -16,7 +16,7 @@
     </ng-template>
     <ng-template pTemplate="footer">
         <div style="justify-content: center; display: flex;">
-            <p-button class="boton" label="Ingresar" icon="pi pi-check" (click)="login()"></p-button>
+            <p-button class="boton" label="Ingresar" icon="pi pi-check" (click)="signIn()"></p-button>
         </div>
     </ng-template>
 </p-card>
