@@ -1,22 +1,32 @@
-<p-card [style]="{ 'display': 'flex', 'justify-content': 'center', 'width': '360px', 'margin': '0 auto'}">
-    
-            <h3 style="justify-content: center; display: flex;">Login</h3>
-    
+
+<p-toast position="top-right" key="tc"></p-toast>
+<p-dialog [(visible)]="displayModal" [modal]="true"
+    [style]="{ 'display': 'flex', 'justify-content': 'center', 'width': '360px', 'margin': '0 auto'}"
+    [draggable]="false" [resizable]="false" [closable]="false">
+
+    <div>
+    <img src={{angular}} [style]="{'width': '150px','height': '150px','display': 'flex', 'justify-content': 'center', 'margin': 'auto' }">
+    </div>
+
+    <h3 style="justify-content: center; display: flex;">Login</h3>
     <ng-template pTemplate="content">
+
         <div class="general">
             <span class="p-float-label">
                 <input id="float-input" type="text" pInputText [(ngModel)]="email">
                 <label for="float-input">Email</label>
             </span>
             <span class="p-float-label">
-                <input id="float-input" type="text" pInputText [(ngModel)]="password">
-                <label for="float-input">Contraseña</label>
+                <input id="float-input2" type="password" pPassword promptLabel="Ingrese su contraseña" [(ngModel)]="password">
+                <label for="float-input2">Contraseña</label>
             </span>
         </div>
+        
     </ng-template>
     <ng-template pTemplate="footer">
-        <div style="justify-content: center; display: flex;">
-            <p-button class="boton" label="Ingresar" icon="pi pi-check" (click)="signIn()"></p-button>
+        <div style="justify-content: center; display: flex; margin-top: 15%;">
+            <button pButton type="button" label="Ingresar" class="p-button-success"  (click)="signIn();loggedIn()"></button>
         </div>
     </ng-template>
-</p-card>
+</p-dialog>
+<!-- (click)="displayModal=false" -->

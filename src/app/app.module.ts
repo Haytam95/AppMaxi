@@ -8,7 +8,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { DialogModule } from 'primeng/dialog';
-import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { InputTextModule } from 'primeng/inputtext';
+import { PasswordModule } from 'primeng/password';
+import { ToastModule } from 'primeng/toast';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -17,9 +21,10 @@ import { JavaComponent } from './java/java.component';
 import { ReactnativeComponent } from './reactnative/reactnative.component';
 import { DatabaseComponent } from './database/database.component';
 import { FormsModule } from '@angular/forms';
+import { CargaComponent } from './carga/carga.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/language/angular', pathMatch: 'full' },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: 'language/angular', component: AngularComponent },
   { path: 'language/java', component: JavaComponent },
   { path: 'language/reactnative', component: ReactnativeComponent },
@@ -33,7 +38,8 @@ const routes: Routes = [
     AngularComponent,
     JavaComponent,
     ReactnativeComponent,
-    DatabaseComponent
+    DatabaseComponent,
+    CargaComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,11 @@ const routes: Routes = [
     CardModule,
     ButtonModule,
     FormsModule,
+    InputTextModule,
     DialogModule,
+    InputTextareaModule,
+    ToastModule,
+    PasswordModule,
     SidebarModule,
     AngularFireAuthModule,
     RouterModule.forRoot(routes),

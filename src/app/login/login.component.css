@@ -1,10 +1,12 @@
 .general{
-  display: flex;
-  justify-content: center;
   flex-direction: column;
 }
 
 .p-float-label{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
   margin-top: 2vw;
 }
 
@@ -16,5 +18,4 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
+};

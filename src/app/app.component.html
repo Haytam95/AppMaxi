@@ -1,28 +1,25 @@
-<p-dialog [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
-[draggable]="false" [resizable]="false" [closable]="false">
-<app-login></app-login>
-    <ng-template pTemplate="footer">
-    <p-button icon="pi pi-check" (click)="displayModal=false" label="Cerrar/(Borrar despues)" styleClass="p-button-text"></p-button>
-    </ng-template>
-</p-dialog>
+<div class="backgroundIMG" style="background-image: url({{fondo}});">
+<!-- <app-login></app-login> -->
 
 <div style="display: flex; justify-content: space-between;">
-<p-button type="text" (click)="display = true" icon="pi pi-th-large" label="Opciones"></p-button>
-<p-button type="text" (click)="displayInfo = true" icon="pi pi-plus" label="Agregar Info"></p-button>
+    <p-button type="text" (click)="display = true" icon="pi pi-th-large" label="Opciones"></p-button>
+    <p-button type="text" (click)="displayInfo = true" icon="pi pi-plus" label="Agregar Info"></p-button>
 </div>
 
-<p-sidebar [(visible)]="displayInfo" position="right" styleClass="p-sidebar-md" >
- <div>
-     <p>Aca se cargan las cosas</p>
- </div>
+<p-sidebar [(visible)]="displayInfo" position="right" styleClass="p-sidebar-md">
+    <div>
+        <app-carga></app-carga>
+    </div>
 </p-sidebar>
 
 <p-sidebar [(visible)]="display" position="top">
-    <div #pnl class="botones">
+    <div class="botones">
         <p-button routerLink="/language/angular" routerLinkActive="active">Angular</p-button>
         <p-button routerLink="/language/java" routerLinkActive="active">Java</p-button>
         <p-button routerLink="/language/reactnative" routerLinkActive="active">React-Native</p-button>
         <p-button routerLink="/language/database" routerLinkActive="active">Base-De-Datos</p-button>
     </div>
 </p-sidebar>
+
 <router-outlet></router-outlet>
+</div>

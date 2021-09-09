@@ -7,13 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit{
   public display: boolean;
-  public fondo: string;
+  public fondo = 'https://p4.wallpaperbetter.com/wallpaper/259/963/669/quentin-bouilloud-artwork-digital-art-japan-feudal-japan-hd-wallpaper-preview.jpg';
   public titulo: string;
   public displayInfo: boolean;
-  public displayModal: boolean;
 
-  ngOnInit(): void {
-    this.displayModal = true;
-  }
+  ngOnInit(): void { }
 }
 

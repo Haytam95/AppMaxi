@@ -1,0 +1,12 @@
+.content-sidebar {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.content-sidebar > *:nth-child(1){
+    flex: 1 1 30%;
+}
+
+.content-sidebar > *:nth-child(2){
+    flex: 1 1 70%;
+}

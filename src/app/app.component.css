@@ -4,3 +4,15 @@
     justify-content: space-evenly;
   }
   
+  
+.backgroundIMG{
+    display: flex;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    position: absolute;
+    background-size: cover;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+}
