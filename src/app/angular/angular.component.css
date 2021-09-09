@@ -1,12 +1,38 @@
-.content-sidebar {
+.panel {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    margin-top: 2%;
 }
 
-.content-sidebar > *:nth-child(1){
-    flex: 1 1 30%;
+.space {
+    display: flex;
+    flex-direction: column;
+    padding: 3px;
 }
 
-.content-sidebar > *:nth-child(2){
-    flex: 1 1 70%;
+.muestra {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    color: white;
+}
+
+.mostrar{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    height: 65vh;
+    width: 100%;
+}
+
+.general{
+    display: flex;
+    justify-content: center;
+    color: white;
 }

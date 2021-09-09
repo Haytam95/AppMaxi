@@ -13,6 +13,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ToastModule } from 'primeng/toast';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -49,6 +50,7 @@ const routes: Routes = [
     FormsModule,
     InputTextModule,
     DialogModule,
+    ScrollPanelModule,
     InputTextareaModule,
     ToastModule,
     PasswordModule,

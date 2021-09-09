@@ -1,23 +1,24 @@
-<div style="
-background: rgba(204, 204, 204, 0.5);">
+<div>
+    <p-scrollPanel class="info" [style]="{width: '90%',height: '750px'}">
+        <div>
+            <div class="info" style="margin-top: 5%;">
+                <input id="float-input3" type="text" placeholder="Titulo" pInputText [(ngModel)]="titulo">
+            </div>
 
-    <div class="info">
-        <input id="float-input3" type="text" placeholder="Titulo" pInputText [(ngModel)]="titulo">
-    </div>
+            <div class="info">
+                <textarea rows="5" cols="70" pInputTextarea placeholder="Ingrese contenido" [(ngModel)]="content"
+                    autoResize="autoResize"></textarea>
+            </div>
 
-    <div class="info">
-        <textarea rows="5" cols="70" pInputTextarea placeholder="Ingrese contenido" [(ngModel)]="content"
-            autoResize="autoResize"></textarea>
-    </div>
+            <div class="info">
+                <select class="select" [(ngModel)]="selectedLanguaje" type="text">
+                    <option *ngFor="let listaL of languajes">{{listaL}}</option>
+                </select>
+            </div>
 
-    <div class="info">
-        <select class="select" [(ngModel)]="selectedLanguaje" type="text">
-            <option *ngFor="let listaL of languajes">{{listaL}}</option>
-        </select>
-    </div>
-
-    <div class="info">
-        <button pButton type="button" label="Cargar" class="p-button-success" (click)="cargar()"></button>
-    </div>
-
+            <div class="info">
+                <button pButton type="button" label="Cargar" class="p-button-success" (click)="cargar()"></button>
+            </div>
+        </div>
+    </p-scrollPanel>
 </div>
