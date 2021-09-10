@@ -8,15 +8,14 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class CargaComponent implements OnInit {
 
+  
   public titulo: string;
   public content: string;
   public languajes = ['Angular', 'Java', 'ReactNative', 'DataBase'];
   public selectedLanguaje = '';
-  constructor(private firestore: AngularFirestore) {
-   }
+  constructor(private firestore: AngularFirestore) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   public cargar(): void {
     this.firestore.collection(this.selectedLanguaje)
@@ -27,5 +26,6 @@ export class CargaComponent implements OnInit {
       });
     alert('Se ha cargado la info');
   }
+
 
 }

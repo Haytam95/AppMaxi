@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
     private authenticationService: AuthenticationService, private messageService: MessageService
   ) { }
 
-  public counter = 1;
   public email: string;
   public password: string;
   public displayModal: boolean = true;
