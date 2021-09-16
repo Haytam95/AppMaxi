@@ -8,7 +8,6 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class CargaComponent implements OnInit {
 
-  
   public titulo: string;
   public content: string;
   public languajes = ['Angular', 'Java', 'ReactNative', 'DataBase'];

@@ -7,20 +7,13 @@
     right: 0;
     height: 100%;
     width: 100%;
-    margin-top: 2vh;
+    margin-top: 2%;
 }
 
 .space {
     display: flex;
     flex-direction: column;
-    padding: 3px;
-}
-
-.muestra {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    color: white;
+    color: white; 
 }
 
 .mostrar{
@@ -28,11 +21,7 @@
     flex-direction: column;
     text-align: center;
     height: 65vh;
-    width: 100%;
-}
-
-.general{
-    display: flex;
-    justify-content: center;
+    width: 84vmax;
     color: white;
+    justify-content: center;
 }

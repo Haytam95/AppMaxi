@@ -17,30 +17,21 @@ import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { AngularComponent } from './angular/angular.component';
-import { JavaComponent } from './java/java.component';
-import { ReactnativeComponent } from './reactnative/reactnative.component';
-import { DatabaseComponent } from './database/database.component';
 import { FormsModule } from '@angular/forms';
 import { CargaComponent } from './carga/carga.component';
+import { LangComponent } from './lang/lang.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: 'language/angular', component: AngularComponent },
-  { path: 'language/java', component: JavaComponent },
-  { path: 'language/reactnative', component: ReactnativeComponent },
-  { path: 'language/database', component: DatabaseComponent },
+  { path: 'lang/:index', component: LangComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    AngularComponent,
-    JavaComponent,
-    ReactnativeComponent,
-    DatabaseComponent,
-    CargaComponent
+    CargaComponent,
+    LangComponent
   ],
   imports: [
     BrowserModule,
