@@ -21,7 +21,7 @@ export class AuthenticationService {
       .then(res => {
         console.log('Youre in!');
         this.displayModal = false;
-        this.router.navigate(['language/angular']);
+         this.router.navigateByUrl('/navbar/lang');
       })
       .catch(err => {
         console.log('Something went wrong:', err.message);

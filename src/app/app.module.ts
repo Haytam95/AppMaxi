@@ -20,10 +20,16 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { CargaComponent } from './carga/carga.component';
 import { LangComponent } from './lang/lang.component';
+import { AuthGuardGuard } from './auth-guard.guard';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: 'lang/:index', component: LangComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'navbar', component: NavbarComponent,  children: [
+    { path: 'lang', component: LangComponent, canActivate: [AuthGuardGuard] },
+          
+  ]}
 ];
 
 @NgModule({
@@ -31,7 +37,8 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     CargaComponent,
-    LangComponent
+    LangComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,

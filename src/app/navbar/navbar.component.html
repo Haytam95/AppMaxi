@@ -1,0 +1,27 @@
+<div style="display: flex; justify-content: space-between;">
+    <p-button type="text" (click)="display = true" icon="pi pi-th-large" label="Opciones"></p-button>
+    <p-button type="text" (click)="displayAdd = true" icon="pi pi-plus" label="Agregar Lenguaje"></p-button>
+    <p-button type="text" (click)="displayInfo = true" icon="pi pi-plus" label="Agregar Info"></p-button>
+</div>
+
+<p-sidebar [(visible)]="displayInfo" position="right" styleClass="p-sidebar-md">
+    <div class="p-sidebar p-sidebar-active botones"
+        style="width: 92% ;background-size: cover; background-image: url(https://static.vecteezy.com/system/resources/previews/001/338/727/non_2x/blue-binary-cyber-circuit-future-technology-background-vector.jpg);">
+        <app-carga></app-carga>
+    </div>
+</p-sidebar>
+
+<div>
+    <p-sidebar [(visible)]="display" position="top">
+        <div class="p-sidebar p-sidebar-active botones"
+            style="background-size: cover; background-image: url(https://static.vecteezy.com/system/resources/previews/001/736/129/non_2x/abstract-glowing-blue-horizontal-lines-pattern-vector.jpg);">
+            <div class="botones" style="display: flex; align-items: center; position: relative;">
+                <ul>
+                    <li *ngFor="let lang of langlist ; let i = index" style="list-style: none">
+                        <p-button class="button" [routerLink]="'/lang/' + i" routerLinkActive="active">{{lang}}</p-button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </p-sidebar>
+</div>

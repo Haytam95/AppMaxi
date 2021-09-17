@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { DataListService } from './data-list.service';
 
 @Component({
   selector: 'app-root',
@@ -8,20 +7,11 @@ import { DataListService } from './data-list.service';
 })
 export class AppComponent implements OnInit {
 
-  public title: string;
-  public titulo: string;
-  public display: boolean;
-  public displayAdd: boolean;
-  public displayInfo: boolean;
-  public langlist;
+  public title;
+  
+  constructor() { }
 
-  constructor(private datalist: DataListService) { }
+  ngOnInit(){}
 
-  ngOnInit(): void {
-     this.datalist.getAllData().subscribe((result) => {
-      this.langlist = result;
-      console.log(this.langlist, 'TestData');
-    });
-  }
 }
 
