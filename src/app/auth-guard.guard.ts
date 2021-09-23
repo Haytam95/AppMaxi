@@ -20,18 +20,20 @@ export class AuthGuardGuard implements CanActivate {
       const sub = this.auth.user.subscribe(
         (user) => {
           if (user === null) {
-            this.router.navigateByUrl('login')
+            this.router.navigateByUrl('login');
             resolve(false);
           } else {
             resolve(true);
           }
         },
-        () => {this.router.navigateByUrl('login')
-        resolve(false); },
+        () => {
+          this.router.navigateByUrl('login');
+          resolve(false);
+        },
         () => {
           sub.unsubscribe();
-        })
-    })
+        });
+    });
 
 
   }

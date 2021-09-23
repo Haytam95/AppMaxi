@@ -21,7 +21,7 @@ export class AuthenticationService {
       .then(res => {
         console.log('Youre in!');
         this.displayModal = false;
-         this.router.navigateByUrl('/navbar/lang');
+        this.router.navigateByUrl('/content');
       })
       .catch(err => {
         console.log('Something went wrong:', err.message);
@@ -29,3 +29,4 @@ export class AuthenticationService {
   }
 
 }
+

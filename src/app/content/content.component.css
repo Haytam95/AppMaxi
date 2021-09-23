@@ -1,0 +1,14 @@
+.botones{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-size: cover;
+    align-items: center;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 96%;
+    position: fixed
+  }

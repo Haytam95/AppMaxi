@@ -5,6 +5,11 @@ import { Observable } from 'rxjs';
 export interface Data {
   titulo: string;
   content: string;
+  id_tipo: string;
+}
+
+export interface Lang {
+  nombre: string;
 }
 
 @Injectable({
@@ -12,21 +17,21 @@ export interface Data {
 })
 
 export class DataListService {
-  public data: Data[] = [];
+  public data;
 
   constructor(private firestore: AngularFirestore) { }
 
-  public getAllData(): any{
-    // Aca deberia devolver los lenguajes //
-    return this.firestore.collection('').valueChanges();
+  public getDataLang(): Observable<Lang[]> {
+    return this.firestore.collection<Lang>('Tipo').valueChanges();
   }
 
-  public getDataAngular(): Observable<Data[]> {
-    return this.firestore.collection<Data>('Angular').valueChanges();
+  public getAllData(index: number = 0): Observable<Data[]> {
+    this.data = this.firestore.collection<Data>('Datos').valueChanges();
+    return this.data[index];
   }
 
   public getDataIndex(index: number = 0): Data {
-    // Aca tendria que devolver la data de firebase pero en base al documento que se este mostrando //
+    this.data = this.firestore.collection<Data>('Datos').valueChanges();
     return this.data[index];
   }
 }

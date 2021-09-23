@@ -21,15 +21,14 @@ import { FormsModule } from '@angular/forms';
 import { CargaComponent } from './carga/carga.component';
 import { LangComponent } from './lang/lang.component';
 import { AuthGuardGuard } from './auth-guard.guard';
-import { NavbarComponent } from './navbar/navbar.component';
+import { ContentComponent } from './content/content.component';
+import { CargalangComponent } from './cargalang/cargalang.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'navbar', component: NavbarComponent,  children: [
-    { path: 'lang', component: LangComponent, canActivate: [AuthGuardGuard] },
-          
-  ]}
+  { path: 'content', component: ContentComponent, canActivate: [AuthGuardGuard]},
+  { path: 'content/:index', component: LangComponent }
 ];
 
 @NgModule({
@@ -38,7 +37,8 @@ const routes: Routes = [
     LoginComponent,
     CargaComponent,
     LangComponent,
-    NavbarComponent
+    ContentComponent,
+    CargalangComponent
   ],
   imports: [
     BrowserModule,

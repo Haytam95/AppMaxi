@@ -13,7 +13,9 @@ export class LangComponent implements OnInit {
 
   ngOnInit(): void {
     const index = this.route.snapshot.params.index;
-    this.datas = this.datalist.getDataIndex(index);
+    this.datalist.getAllData(index).subscribe((resolve) => {
+      this.datas = resolve;
+    });
   }
 
 }
