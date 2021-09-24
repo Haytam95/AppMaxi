@@ -10,6 +10,7 @@ export interface Data {
 
 export interface Lang {
   nombre: string;
+  id: string;
 }
 
 @Injectable({
@@ -22,16 +23,10 @@ export class DataListService {
   constructor(private firestore: AngularFirestore) { }
 
   public getDataLang(): Observable<Lang[]> {
-    return this.firestore.collection<Lang>('Tipo').valueChanges();
+    return this.firestore.collection<Lang>('Tipo').valueChanges({idField: "id"});
   }
 
-  public getAllData(index: number = 0): Observable<Data[]> {
-    this.data = this.firestore.collection<Data>('Datos').valueChanges();
-    return this.data[index];
-  }
-
-  public getDataIndex(index: number = 0): Data {
-    this.data = this.firestore.collection<Data>('Datos').valueChanges();
-    return this.data[index];
+  public getDataIndex(id_tipo: string): Observable<Data[]> {
+    return this.firestore.collection<Data>('Datos',ref => ref.where("id_tipo","==",id_tipo)).valueChanges();
   }
 }

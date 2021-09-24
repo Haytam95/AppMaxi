@@ -12,10 +12,10 @@ export class LangComponent implements OnInit {
   constructor(private route: ActivatedRoute, private datalist: DataListService) { }
 
   ngOnInit(): void {
-    const index = this.route.snapshot.params.index;
-    this.datalist.getAllData(index).subscribe((resolve) => {
-      this.datas = resolve;
+   this.route.params.subscribe(result => {
+      this.datalist.getDataIndex(result.index).subscribe(resolve => {
+        this.datas = resolve;
+      });
     });
   }
-
 }
