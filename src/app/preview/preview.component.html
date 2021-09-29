@@ -1,7 +1,44 @@
 <app-content></app-content>
+
 <div class="content" *ngFor="let data of datas">
-    <h1>
-        {{data?.titulo}}
-    </h1>
-    <p>{{data?.content}}</p>
+
+    <div style="display: flex; justify-content: space-around; margin-top: 3%;">
+        <button pButton pRipple type="button" label="Editar" class="p-button-warning p-button-text"
+            (click)="updateInfo = true" icon="pi pi-th-large"></button>
+        <button pButton pRipple type="button" label="Borrar" icon="pi pi-times" class="p-button-danger p-button-text"
+            (click)="borrar(data.id)"></button>
+    </div>
+
+    <div style="text-align: center;">
+        <h1>
+            {{data?.titulo}}
+        </h1>
+        <p>{{data?.content}}</p>
+    </div>
+
+    <p-sidebar [(visible)]="updateInfo" position="left" styleClass="p-sidebar-md">
+        <p-scrollPanel class="info" [style]="{width: '100%',height: '750px'}">
+            <form>
+                <div class="p-sidebar p-sidebar-active edit"
+                    style="background-size: cover; background-image: url(https://data.1freewallpapers.com/download/stars-universe-space.jpg);">
+
+                    <div class="info">
+                        <input id="float-input3" type="text" placeholder="Titulo: {{data.titulo}}" pInputText
+                            [(ngModel)]="data.titulo" name="titulo">
+                    </div>
+
+                    <div class="info">
+                        <textarea rows="5" cols="70" pInputTextarea placeholder="Content: {{data.content}}"
+                            [(ngModel)]="data.content" name="content" autoResize="autoResize"></textarea>
+                    </div>
+
+                    <button style="margin-top: 5%;" pButton pRipple type="button" label="Update"
+                        class="p-button-raised p-button-success" (click)="editar(data.id, data.titulo, data.content)">
+                    </button>
+
+                </div>
+            </form>
+        </p-scrollPanel>
+    </p-sidebar>
+
 </div>

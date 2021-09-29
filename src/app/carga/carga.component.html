@@ -1,5 +1,5 @@
 <div>
-    <p-scrollPanel class="info" [style]="{width: '90%',height: '750px'}">
+    <p-scrollPanel class="info" [style]="{width: '100%',height: '750px'}">
         <div>
             <div class="info" style="margin-top: 5%;">
                 <input id="float-input3" type="text" placeholder="Titulo" pInputText [(ngModel)]="titulo">
@@ -10,11 +10,11 @@
                     autoResize="autoResize"></textarea>
             </div>
 
-            <!-- <div class="info">
+            <div class="info">
                 <select class="select" [(ngModel)]="selectedLanguaje" type="text">
-                    <option *ngFor="let listaL of languajes">{{listaL}}</option>
+                    <option *ngFor="let listaL of langlist">{{listaL.id}}</option>
                 </select>
-            </div> -->
+            </div>
 
             <div class="info">
                 <button pButton type="button" label="Cargar" class="p-button-success" (click)="cargar()"></button>

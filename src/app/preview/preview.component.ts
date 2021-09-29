@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { DataListService } from '../data-list.service';
 import { ActivatedRoute } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/firestore';
+
+export interface Data {
+  titulo: string;
+  content: string;
+  id_tipo: string;
+  id: string;
+}
 
 @Component({
   selector: 'app-preview',
@@ -10,7 +18,11 @@ import { ActivatedRoute } from '@angular/router';
 export class PreviewComponent implements OnInit {
 
   public datas;
-  constructor(private route: ActivatedRoute, private datalist: DataListService) { }
+  public edit = false;
+  public updateInfo;
+  public titulo: string;
+  public content: string;
+  constructor(private route: ActivatedRoute, private datalist: DataListService, private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(result => {
@@ -20,4 +32,16 @@ export class PreviewComponent implements OnInit {
     });
   }
 
+  public borrar(id: string) {
+    if (confirm('Estas Seguro?')) {
+      this.datalist.deleteData(id);
+    }
+  }
+
+  public editar(id: string, titulo: string, content: string): void {
+    if (confirm('Estas Seguro?')) {
+      this.firestore.doc('Datos/' + id).update({ titulo, content });
+      alert('Se han editado correctamente los datos!');
+    }
+  }
 }

@@ -20,6 +20,6 @@ export class CargalangComponent implements OnInit {
       .add({
         Nombre: this.lang,
       });
-    alert('Se ha cargado la info');
+    alert('Se ha cargado el lenguaje correctamente!');
   }
 }

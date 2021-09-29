@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { DataListService } from '../data-list.service';
 
 @Component({
   selector: 'app-carga',
@@ -10,21 +11,24 @@ export class CargaComponent implements OnInit {
 
   public titulo: string;
   public content: string;
-  public idtipo: string;
-  public languajes = ['Angular', 'ReactNative', 'DataBase'];
-  public selectedLanguaje = '';
-  constructor(private firestore: AngularFirestore) {}
+  public selectedLanguaje;
+  public langlist;
+  constructor(private firestore: AngularFirestore, private datalist: DataListService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.datalist.getDataLang().subscribe((resolve) => {
+      this.langlist = resolve;
+    });
+  }
 
   public cargar(): void {
     this.firestore.collection('Datos')
       .add({
         titulo: this.titulo,
         content: this.content,
-        id_tipo: this.idtipo
+        id_tipo: this.selectedLanguaje
       });
-    alert('Se ha cargado la info');
+    alert('Se ha cargado la data correctamente!');
   }
 
 
