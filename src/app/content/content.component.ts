@@ -18,9 +18,9 @@ export class ContentComponent implements OnInit {
   constructor(private datalist: DataListService) { }
 
   ngOnInit(): void {
-     this.datalist.getDataLang().subscribe((resolve) => {
+    this.datalist.getDataLang().subscribe((resolve) => {
       this.langlist = resolve;
-    }); 
+    });
   }
 
 }

@@ -4,7 +4,6 @@
     <p-button type="text" (click)="displayInfo = true" icon="pi pi-plus" label="Agregar Info"></p-button>
 </div>
 
-
 <p-sidebar [(visible)]="displayInfo" position="right" styleClass="p-sidebar-md">
     <div class="p-sidebar p-sidebar-active botones"
         style="width: 92% ;background-size: cover; background-image: url(https://static.vecteezy.com/system/resources/previews/001/338/727/non_2x/blue-binary-cyber-circuit-future-technology-background-vector.jpg);">
@@ -19,17 +18,14 @@
     </div>
 </p-sidebar>
 
-
-
 <p-sidebar [(visible)]="display" position="top">
-    <div class="botones"
-        style="background-size: cover; background-image: url(https://static.vecteezy.com/system/resources/previews/001/736/129/non_2x/abstract-glowing-blue-horizontal-lines-pattern-vector.jpg);">
+    <div class="botones">
         <div>
-            <ul class="botones">
-                <li *ngFor="let lang of langlist" style="list-style: none">
-                    <p-button [routerLink]="'/content/' + lang.id" routerLinkActive="active">
-                        {{lang.Nombre}}
-                    </p-button>
+            <ul class="ul">
+                <li *ngFor="let lang of langlist" style="list-style: none;">
+                    <button type="button" class="p-button-text" pButton [routerLink]="'/content/' + lang.id"
+                        style="color: black;" routerLinkActive="active" [label]="lang?.Nombre">
+                    </button>
                 </li>
             </ul>
         </div>

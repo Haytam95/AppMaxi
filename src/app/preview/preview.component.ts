@@ -1,22 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { DataListService } from '../data-list.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-lang',
-  templateUrl: './lang.component.html',
-  styleUrls: ['./lang.component.css']
+  selector: 'app-preview',
+  templateUrl: './preview.component.html',
+  styleUrls: ['./preview.component.css']
 })
-export class LangComponent implements OnInit {
+export class PreviewComponent implements OnInit {
 
   public datas;
   constructor(private route: ActivatedRoute, private datalist: DataListService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(result => {
-      this.datalist.getDataIndex(result.index).subscribe(resolve => {
+      this.datalist.getDataPreview(result.index).subscribe(resolve => {
         this.datas = resolve;
       });
     });
   }
+
 }
