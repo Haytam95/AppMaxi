@@ -22,13 +22,15 @@ export class CargaComponent implements OnInit {
   }
 
   public cargar(): void {
-    this.firestore.collection('Datos')
-      .add({
-        titulo: this.titulo,
-        content: this.content,
-        id_tipo: this.selectedLanguaje
-      });
-    alert('Se ha cargado la data correctamente!');
+    if (confirm('Estas Seguro?')) {
+      this.firestore.collection('Datos')
+        .add({
+          titulo: this.titulo,
+          content: this.content,
+          id_tipo: this.selectedLanguaje
+        });
+      alert('Se ha cargado la data correctamente!');
+    }
   }
 
 

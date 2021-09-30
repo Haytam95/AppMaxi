@@ -12,7 +12,7 @@
 
             <div class="info">
                 <select class="select" [(ngModel)]="selectedLanguaje" type="text">
-                    <option *ngFor="let listaL of langlist">{{listaL.id}}</option>
+                    <option value="{{listaL.id}}" *ngFor="let listaL of langlist">{{listaL.Nombre}}</option>
                 </select>
             </div>
 

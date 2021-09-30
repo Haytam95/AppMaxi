@@ -16,10 +16,12 @@ export class CargalangComponent implements OnInit {
   }
 
   public cargar(): void {
-    this.firestore.collection('Tipo')
-      .add({
-        Nombre: this.lang,
-      });
-    alert('Se ha cargado el lenguaje correctamente!');
+    if (confirm('Estas Seguro?')) {
+      this.firestore.collection('Tipo')
+        .add({
+          Nombre: this.lang,
+        });
+      alert('Se ha cargado el lenguaje correctamente!');
+    }
   }
 }
