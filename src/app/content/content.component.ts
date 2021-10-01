@@ -13,6 +13,7 @@ export class ContentComponent implements OnInit {
   public display: boolean;
   public displayAdd: boolean;
   public displayInfo: boolean;
+  public displayProfile: boolean;
   public langlist;
 
   constructor(private datalist: DataListService) { }

@@ -6,8 +6,9 @@
             </div>
 
             <div class="info">
-                <textarea rows="5" cols="70" pInputTextarea placeholder="Ingrese contenido" [(ngModel)]="content"
-                    autoResize="autoResize"></textarea>
+                <!-- <textarea rows="5" cols="70" pInputTextarea  
+                    autoResize="autoResize"></textarea> -->
+                    <p-editor placeholder="Ingrese contenido" [(ngModel)]="content" [style]="{'height':'320px'}"></p-editor>
             </div>
 
             <div class="info">

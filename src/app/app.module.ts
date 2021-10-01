@@ -14,6 +14,7 @@ import { PasswordModule } from 'primeng/password';
 import { ToastModule } from 'primeng/toast';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
+import { EditorModule } from 'primeng/editor';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -54,6 +55,7 @@ const routes: Routes = [
     ScrollPanelModule,
     InputTextareaModule,
     ToastModule,
+    EditorModule,
     PasswordModule,
     SidebarModule,
     AngularFireAuthModule,
