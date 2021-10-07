@@ -16,12 +16,32 @@
     color: white; 
 }
 
-.mostrar{
+.allText {
     display: flex;
     flex-direction: column;
-    text-align: center;
-    height: 65vh;
-    width: 84vmax;
     color: white;
-    justify-content: center;
 }
+
+h1 {
+    text-transform: uppercase;
+}
+
+.edit{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+.info {
+    display: flex;
+    justify-content: center;
+    margin-top: 3%;
+}
+

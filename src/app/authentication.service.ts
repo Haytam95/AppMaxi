@@ -10,7 +10,7 @@ export class AuthenticationService {
 
   public userData: Observable<firebase.User>;
   public displayModal = true;
-
+  public email: string;
   constructor(private angularFireAuth: AngularFireAuth, private router: Router) {
     this.userData = angularFireAuth.authState;
   }
@@ -20,6 +20,7 @@ export class AuthenticationService {
     this.angularFireAuth.signInWithEmailAndPassword(email, password)
       .then(res => {
         console.log('Youre in!');
+        this.email = email;
         this.displayModal = false;
         this.router.navigateByUrl('/content');
       })
@@ -27,6 +28,9 @@ export class AuthenticationService {
         console.log('Something went wrong:', err.message);
       });
   }
-
+  
+  public getEmail(){
+    return this.email;
+  }
 }
 

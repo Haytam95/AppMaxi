@@ -1,16 +1,21 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { DataListService } from '../data-list.service';
 
 @Component({
   selector: 'app-lang',
   templateUrl: './lang.component.html',
-  styleUrls: ['./lang.component.css']
+  styleUrls: ['./lang.component.css'],
 })
 export class LangComponent implements OnInit {
 
   public datas;
-  constructor(private route: ActivatedRoute, private datalist: DataListService) { }
+  public currentTitle: string;
+  public currentContent: string;
+  public currentId: string;
+  public updateInfo;
+  constructor(private route: ActivatedRoute, private datalist: DataListService, private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(result => {
@@ -18,5 +23,24 @@ export class LangComponent implements OnInit {
         this.datas = resolve;
       });
     });
+  }
+
+  public showInfo(id, title, content) {
+    this.currentId = id;
+    this.currentTitle = title;
+    this.currentContent = content;
+  }
+
+  public borrar() {
+    if (confirm('Estas Seguro?')) {
+      this.datalist.deleteData(this.currentId);
+    }
+  }
+
+  public editar(titulo: string, content: string): void {
+    if (confirm('Estas Seguro?')) {
+      this.firestore.doc('Datos/' + this.currentId).update({titulo, content});
+      alert('Se han editado correctamente los datos!');
+    }
   }
 }

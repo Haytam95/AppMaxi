@@ -20,7 +20,6 @@ export interface Lang {
 })
 
 export class DataListService {
-  public data;
 
   constructor(private firestore: AngularFirestore, private router: Router) { }
 
