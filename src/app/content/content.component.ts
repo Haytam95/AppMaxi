@@ -16,6 +16,7 @@ export class ContentComponent implements OnInit {
   public displayAdd: boolean;
   public displayInfo: boolean;
   public displayProfile: boolean;
+  public datauser;
   public langlist;
 
   constructor(private datalist: DataListService, private authenticationService: AuthenticationService) { }
@@ -24,8 +25,16 @@ export class ContentComponent implements OnInit {
     this.datalist.getDataLang().subscribe((resolve) => {
       this.langlist = resolve;
     });
+    this.authenticationService.getUserData().subscribe((resolve) => {
+      this.datauser = resolve;
+      console.log(this.datauser, "DATAUSER");
+    })
+    
     this.email = this.authenticationService.getEmail();
   }
 
+  logOut(){
+    alert("Esto te va a deslogear")
+  }
 
 }

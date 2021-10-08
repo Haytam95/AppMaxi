@@ -24,12 +24,14 @@ import { LangComponent } from './lang/lang.component';
 import { AuthGuardGuard } from './auth-guard.guard';
 import { ContentComponent } from './content/content.component';
 import { CargalangComponent } from './cargalang/cargalang.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'content', component: ContentComponent, canActivate: [AuthGuardGuard] },
   { path: 'content/:index', component: LangComponent, canActivate: [AuthGuardGuard] },
+  { path: 'register' , component: RegisterComponent}
 ];
 
 @NgModule({
@@ -40,6 +42,7 @@ const routes: Routes = [
     LangComponent,
     ContentComponent,
     CargalangComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

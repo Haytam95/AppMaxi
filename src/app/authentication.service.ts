@@ -29,8 +29,16 @@ export class AuthenticationService {
       });
   }
   
+  public signUp (){
+    alert("Esto deberia registrarte");
+  }
+
   public getEmail(){
     return this.email;
+  }
+
+  public getUserData(): Observable<any>{
+    return this.userData;
   }
 }
 

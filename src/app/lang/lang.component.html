@@ -15,7 +15,7 @@
     </div>
 
     <div class="allText" style="text-align: center; width: 100vmax;  backdrop-filter: brightness(55%);">
-        <div style="display: flex; justify-content: space-around; margin-top: 3%;">
+        <div *ngIf="buttons" style="display: flex; justify-content: space-around; margin-top: 3%;">
             <button pButton pRipple type="button" label="Editar" class="p-button-warning p-button-text"
                 (click)="updateInfo = true" icon="pi pi-th-large"></button>
             <button pButton pRipple type="button" label="Borrar" icon="pi pi-trash"
