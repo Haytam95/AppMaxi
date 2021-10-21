@@ -39,7 +39,7 @@ export class LangComponent implements OnInit {
 
   public editar(titulo: string, content: string): void {
     if (confirm('Estas Seguro?')) {
-      this.firestore.doc('Datos/' + this.currentId).update({titulo, content});
+      this.firestore.doc('Datos/' + this.currentId).update({ titulo, content });
       alert('Se han editado correctamente los datos!');
     }
   }
