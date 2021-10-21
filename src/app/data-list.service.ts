@@ -15,11 +15,18 @@ export interface Lang {
   id: string;
 }
 
+export interface CurrentData {
+  id: string;
+  titulo: string;
+  content: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class DataListService {
+  private currentData;
 
   constructor(private firestore: AngularFirestore, private router: Router) { }
 
@@ -40,4 +47,11 @@ export class DataListService {
     this.router.navigateByUrl('content');
   }
 
+  public saveCurrentData(cData: CurrentData) {
+    this.currentData = cData;
+  }
+
+   public getCurrentData(): Observable<CurrentData> {
+     return this.currentData;
+   }
 }

@@ -11,7 +11,6 @@ export class ContentComponent implements OnInit {
 
   public title: string;
   public titulo: string;
-  public email: string;
   public display: boolean;
   public displayAdd: boolean;
   public displayInfo: boolean;
@@ -27,14 +26,13 @@ export class ContentComponent implements OnInit {
     });
     this.authenticationService.getUserData().subscribe((resolve) => {
       this.datauser = resolve;
-      console.log(this.datauser, "DATAUSER");
-    })
-    
-    this.email = this.authenticationService.getEmail();
+    });
   }
 
-  logOut(){
-    alert("Esto te va a deslogear")
+  public logOut() {
+    if (confirm('Estas Seguro?')) {
+      this.authenticationService.SignOut();
+    }
   }
 
 }

@@ -1,11 +1,22 @@
 <app-content></app-content>
 <div class="panel">
 
-    <div >
-        <p-scrollPanel [style]="{width: '14vmax', height: '87vh'}">
+    <p-sidebar [(visible)]="displayInfo" position="right" styleClass="p-sidebar-md">
+        <div class="p-sidebar p-sidebar-active botones"
+            style="width: 100% ;background-size: cover; background-image: url(https://static.vecteezy.com/system/resources/previews/001/338/727/non_2x/blue-binary-cyber-circuit-future-technology-background-vector.jpg);">
+            <app-carga></app-carga>
+        </div>
+    </p-sidebar>
+
+    <div>
+        <button type="button" pButton class="p-button-text" (click)="displayInfo = true" icon="pi pi-plus"
+            style="display: flex;color: rgb(0, 255, 0); margin: auto;justify-content: center;"
+            label="Agregar Info"></button>
+        <p-scrollPanel [style]="{width: '14vmax', height: '86vh'}">
             <div class="space">
                 <ul style="padding: 1%;">
-                    <li style="list-style: none" *ngFor="let data of datas">
+                    <li style="list-style: none; display: flex; margin: auto; justify-content: center;"
+                        *ngFor="let data of datas">
                         <button style="color: gold;" type="button" class="p-button-text" pButton [label]="data?.titulo"
                             (click)="showInfo(data.id, data.titulo, data.content)"></button>
                     </li>
@@ -17,7 +28,7 @@
     <div class="allText" style="text-align: center; width: 100vmax;  backdrop-filter: brightness(55%);">
         <div *ngIf="buttons" style="display: flex; justify-content: space-around; margin-top: 3%;">
             <button pButton pRipple type="button" label="Editar" class="p-button-warning p-button-text"
-                (click)="updateInfo = true" icon="pi pi-th-large"></button>
+                (click)="displayInfo = true" icon="pi pi-th-large"></button>
             <button pButton pRipple type="button" label="Borrar" icon="pi pi-trash"
                 class="p-button-danger p-button-text" (click)="borrar()"></button>
         </div>
@@ -31,8 +42,8 @@
             <p-scrollPanel class="info" [style]="{width: '100%',height: '750px'}">
                 <div>
                     <div class="info">
-                        <input id="float-input3" type="text" placeholder="Titulo" pInputText
-                            [(ngModel)]="currentTitle" name="titulo">
+                        <input id="float-input3" type="text" placeholder="Titulo" pInputText [(ngModel)]="currentTitle"
+                            name="titulo">
                     </div>
 
                     <div class="info">
@@ -40,8 +51,9 @@
                             [style]="{'height':'320px'}"></p-editor>
                     </div>
 
-                    <button style="display: flex; margin: auto; margin-top: 5%; justify-content: center; " pButton pRipple type="button" label="Update"
-                        class="p-button-raised p-button-success" (click)="editar(currentTitle,currentContent)">
+                    <button style="display: flex; margin: auto; margin-top: 5%; justify-content: center; " pButton
+                        pRipple type="button" label="Update" class="p-button-raised p-button-success"
+                        (click)="editar(currentTitle,currentContent)">
                     </button>
                 </div>
             </p-scrollPanel>

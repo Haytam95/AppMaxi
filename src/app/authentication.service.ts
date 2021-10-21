@@ -10,34 +10,44 @@ export class AuthenticationService {
 
   public userData: Observable<firebase.User>;
   public displayModal = true;
-  public email: string;
+
   constructor(private angularFireAuth: AngularFireAuth, private router: Router) {
     this.userData = angularFireAuth.authState;
   }
 
   /* Sign in */
-  SignIn(email: string, password: string) {
+  public SignIn(email: string, password: string) {
     this.angularFireAuth.signInWithEmailAndPassword(email, password)
       .then(res => {
         console.log('Youre in!');
-        this.email = email;
         this.displayModal = false;
         this.router.navigateByUrl('/content');
       })
       .catch(err => {
+        alert('Contraseña o Usuario incorrectos!');
         console.log('Something went wrong:', err.message);
       });
   }
-  
-  public signUp (){
-    alert("Esto deberia registrarte");
+
+  /* Sign up */
+  public SignUp(email: string, password: string) {
+    this.angularFireAuth.createUserWithEmailAndPassword(email, password)
+      .then(res => {
+        alert('Registrado correctamente!');
+        console.log('You are Successfully signed up!', res);
+      })
+      .catch(error => {
+        alert('Algo salio mal!');
+        console.log('Something is wrong:', error.message);
+      });
   }
 
-  public getEmail(){
-    return this.email;
+  /* Sign out */
+  public SignOut() {
+    this.angularFireAuth.signOut();
   }
 
-  public getUserData(): Observable<any>{
+  public getUserData(): Observable<any> {
     return this.userData;
   }
 }

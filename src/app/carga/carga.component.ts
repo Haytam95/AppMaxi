@@ -13,15 +13,23 @@ export class CargaComponent implements OnInit {
   public content: string;
   public selectedLanguaje;
   public langlist;
+  public currentId;
+  public currentTitulo;
+  public currentContent;
+  public data;
   constructor(private firestore: AngularFirestore, private datalist: DataListService) { }
 
   ngOnInit(): void {
     this.datalist.getDataLang().subscribe((resolve) => {
       this.langlist = resolve;
     });
+    this.datalist.getCurrentData().subscribe(resolve => {
+      this.data = resolve;
+    });
   }
 
   public cargar(): void {
+    console.log(this.data, this.datalist.getCurrentData(), "DATA");
     if (confirm('Estas Seguro?')) {
       this.firestore.collection('Datos')
         .add({
@@ -32,6 +40,4 @@ export class CargaComponent implements OnInit {
       alert('Se ha cargado la data correctamente!');
     }
   }
-
-
 }

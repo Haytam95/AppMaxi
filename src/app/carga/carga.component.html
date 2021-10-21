@@ -6,9 +6,7 @@
             </div>
 
             <div class="info">
-                <!-- <textarea rows="5" cols="70" pInputTextarea  
-                    autoResize="autoResize"></textarea> -->
-                    <p-editor placeholder="Ingrese contenido" [(ngModel)]="content" [style]="{'height':'320px'}"></p-editor>
+                <p-editor placeholder="Ingrese contenido" [(ngModel)]="content" [style]="{'height':'320px'}"></p-editor>
             </div>
 
             <div class="info">
@@ -20,7 +18,11 @@
             <div class="info">
                 <button pButton type="button" label="Cargar" class="p-button-success" (click)="cargar()"></button>
             </div>
-
+            <h1>Hola</h1>
+            <div *ngFor="let data of data">
+                <h1>{{data.id}}</h1>
+            </div>
+            
         </div>
     </p-scrollPanel>
 </div>

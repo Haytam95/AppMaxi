@@ -16,6 +16,7 @@ export class LangComponent implements OnInit {
   public currentId: string;
   public buttons = false;
   public updateInfo;
+  public displayInfo: boolean;
   constructor(private route: ActivatedRoute, private datalist: DataListService, private firestore: AngularFirestore) { }
 
   ngOnInit(): void {
@@ -31,6 +32,7 @@ export class LangComponent implements OnInit {
     this.currentTitle = title;
     this.currentContent = content;
     this.buttons = true;
+    this.datalist.saveCurrentData({ id: this.currentId, titulo: this.currentTitle, content: this.currentContent });
   }
 
   public borrar() {

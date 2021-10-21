@@ -18,12 +18,17 @@
                 <input id="float-input2" type="password" pPassword promptLabel="Ingrese su contraseña" [(ngModel)]="password">
                 <label for="float-input2">Contraseña</label>
             </span>
+            <span class="p-float-label">
+                <input id="float-input2" type="password" pPassword promptLabel="Repita su contraseña" [(ngModel)]="confirmPass">
+                <label for="float-input2">Repita su Contraseña</label>
+            </span>
         </div>
         
     </ng-template>
     <ng-template pTemplate="footer">
         <div style="justify-content: center; display: flex; margin-top: 15%;">
             <button pButton type="button" label="Registrarse" class="p-button-success" (click)="signUp()"></button>
+            <button pButton type="button" [routerLink]="'/login/'" routerLinkActive="active" label="Login" class="p-button-help" ></button>
         </div>
     </ng-template>
 </p-dialog>
