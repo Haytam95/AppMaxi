@@ -1,0 +1,22 @@
+.general{
+    flex-direction: column;
+  }
+  
+.p-float-label{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: auto;
+    margin-top: 2vw;
+  }
+  
+.boton .general{ 
+    margin-left: 5vw;
+  }
+  
+.p-card-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  };
+  

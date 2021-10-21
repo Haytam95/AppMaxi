@@ -14,6 +14,7 @@ export class LangComponent implements OnInit {
   public currentTitle: string;
   public currentContent: string;
   public currentId: string;
+  public buttons = false;
   public updateInfo;
   constructor(private route: ActivatedRoute, private datalist: DataListService, private firestore: AngularFirestore) { }
 
@@ -29,6 +30,7 @@ export class LangComponent implements OnInit {
     this.currentId = id;
     this.currentTitle = title;
     this.currentContent = content;
+    this.buttons = true;
   }
 
   public borrar() {
