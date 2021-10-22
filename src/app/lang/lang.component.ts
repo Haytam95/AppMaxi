@@ -16,6 +16,7 @@ export class LangComponent implements OnInit {
   public currentId: string;
   public buttons = false;
   public updateInfo;
+  public currentData = {};
   public displayInfo: boolean;
   constructor(private route: ActivatedRoute, private datalist: DataListService, private firestore: AngularFirestore) { }
 
@@ -23,16 +24,17 @@ export class LangComponent implements OnInit {
     this.route.params.subscribe(result => {
       this.datalist.getDataIndex(result.index).subscribe(resolve => {
         this.datas = resolve;
+        console.log(this.datas, 'DATAS')
       });
     });
   }
 
-  public showInfo(id, title, content) {
+  public showInfo(id, title, content, id_tipo) {
     this.currentId = id;
     this.currentTitle = title;
     this.currentContent = content;
+    this.currentData = {id, title, content, id_tipo};
     this.buttons = true;
-    this.datalist.saveCurrentData({ id: this.currentId, titulo: this.currentTitle, content: this.currentContent });
   }
 
   public borrar() {

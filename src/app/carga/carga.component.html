@@ -2,25 +2,21 @@
     <p-scrollPanel class="info" [style]="{width: '100%',height: '750px'}">
         <div>
             <div class="info" style="margin-top: 5%;">
-                <input id="float-input3" type="text" placeholder="Titulo" pInputText [(ngModel)]="titulo">
+                <input id="float-input3" type="text" placeholder="Titulo" pInputText [(ngModel)]="data.title">
             </div>
 
             <div class="info">
-                <p-editor placeholder="Ingrese contenido" [(ngModel)]="content" [style]="{'height':'320px'}"></p-editor>
+                <p-editor placeholder="Ingrese contenido" [(ngModel)]="data.content" [style]="{'height':'320px'}"></p-editor>
             </div>
 
             <div class="info">
-                <select class="select" [(ngModel)]="selectedLanguaje" type="text">
+                <select class="select" [(ngModel)]="data.id_tipo" type="text">
                     <option value="{{listaL.id}}" *ngFor="let listaL of langlist">{{listaL.Nombre}}</option>
                 </select>
             </div>
 
             <div class="info">
                 <button pButton type="button" label="Cargar" class="p-button-success" (click)="cargar()"></button>
-            </div>
-            <h1>Hola</h1>
-            <div *ngFor="let data of data">
-                <h1>{{data.id}}</h1>
             </div>
             
         </div>

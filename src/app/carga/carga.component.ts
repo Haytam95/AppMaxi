@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { DataListService } from '../data-list.service';
 
@@ -13,23 +13,17 @@ export class CargaComponent implements OnInit {
   public content: string;
   public selectedLanguaje;
   public langlist;
-  public currentId;
-  public currentTitulo;
-  public currentContent;
-  public data;
+  
+  @Input() public data;
   constructor(private firestore: AngularFirestore, private datalist: DataListService) { }
 
   ngOnInit(): void {
     this.datalist.getDataLang().subscribe((resolve) => {
       this.langlist = resolve;
-    });
-    this.datalist.getCurrentData().subscribe(resolve => {
-      this.data = resolve;
-    });
+    });    
   }
 
   public cargar(): void {
-    console.log(this.data, this.datalist.getCurrentData(), "DATA");
     if (confirm('Estas Seguro?')) {
       this.firestore.collection('Datos')
         .add({
