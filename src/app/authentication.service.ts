@@ -16,7 +16,7 @@ export class AuthenticationService {
   }
 
   /* Sign in */
-  public SignIn(email: string, password: string) {
+  public SignIn(email: string, password: string): void {
     this.angularFireAuth.signInWithEmailAndPassword(email, password)
       .then(res => {
         console.log('Youre in!');
@@ -30,7 +30,7 @@ export class AuthenticationService {
   }
 
   /* Sign up */
-  public SignUp(email: string, password: string) {
+  public SignUp(email: string, password: string): void {
     this.angularFireAuth.createUserWithEmailAndPassword(email, password)
       .then(res => {
         alert('Registrado correctamente!');
@@ -43,8 +43,9 @@ export class AuthenticationService {
   }
 
   /* Sign out */
-  public SignOut() {
+  public SignOut(): void {
     this.angularFireAuth.signOut();
+    this.displayModal = true;
   }
 
   public getUserData(): Observable<any> {

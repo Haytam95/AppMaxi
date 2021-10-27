@@ -25,6 +25,7 @@ import { AuthGuardGuard } from './auth-guard.guard';
 import { ContentComponent } from './content/content.component';
 import { CargalangComponent } from './cargalang/cargalang.component';
 import { RegisterComponent } from './register/register.component';
+import { SafePipe } from './safe.pipe';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -43,6 +44,7 @@ const routes: Routes = [
     ContentComponent,
     CargalangComponent,
     RegisterComponent,
+    SafePipe,
   ],
   imports: [
     BrowserModule,
