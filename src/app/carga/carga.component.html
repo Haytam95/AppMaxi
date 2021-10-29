@@ -15,7 +15,7 @@
                     <option value="{{listaL.id}}" *ngFor="let listaL of langlist">{{listaL.Nombre}}</option>
                 </select>
             </div>
-
+        
             <div class="info">
                 <button *ngIf="!exist" pButton type="button" style="color: lime; backdrop-filter: brightness(55%);" label="Cargar" class="p-button-text" (click)="cargar(data.title, data.content, data.idTipo)"></button>
                 <button *ngIf="exist" pButton type="button" style="color: lime; backdrop-filter: brightness(55%);" label="Editar" class="p-button-text" (click)="editar(data.id, data.title, data.content, data.idTipo)"></button>

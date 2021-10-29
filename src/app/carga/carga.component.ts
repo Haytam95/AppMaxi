@@ -45,6 +45,10 @@ export class CargaComponent implements OnInit {
     }
   }
 
+  public onBasicUpload(event): void {
+
+    
+  }
   public reloadPage(): void {
     const currentUrl = this.router.url;
     this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {

@@ -15,6 +15,8 @@ import { ToastModule } from 'primeng/toast';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { EditorModule } from 'primeng/editor';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { FileUploadModule } from 'primeng/fileupload';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -54,6 +56,7 @@ const routes: Routes = [
     FormsModule,
     InputTextModule,
     DialogModule,
+    FileUploadModule,
     ScrollPanelModule,
     InputTextareaModule,
     ToastModule,
@@ -61,6 +64,7 @@ const routes: Routes = [
     PasswordModule,
     SidebarModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
