@@ -6,19 +6,47 @@
             </div>
 
             <div class="info">
-                <p-editor placeholder="Ingrese contenido" [(ngModel)]="data.content" [style]="{'height':'320px'}">
+                <p-editor  placeholder="Ingrese contenido" [(ngModel)]="data.content"
+                    [style]="{'height':'320px'}">
+                    <!-- <span class="ql-formats">
+                        <button class="ql-link" aria-label="Insert Link" type="button"></button>
+                        <button class="ql-image" aria-label="Insert Image" (click)="testPage()" type="button"></button>
+                        <button class="ql-code-block" aria-label="Insert Code Block" type="button"></button>
+                    </span> -->
                 </p-editor>
             </div>
+
+            <!-- <div id="toolbar">
+                Add font size dropdown 
+                <select class="ql-size">
+                    <option value="small"></option>
+                     Note a missing, thus falsy value, is used to reset to default 
+                    <option selected></option>
+                    <option value="large"></option>
+                    <option value="huge"></option>
+                </select>
+                 Add a bold button 
+                <button class="ql-bold"></button>
+                 Add subscript and superscript buttons 
+                <button class="ql-script" value="sub"></button>
+                <button class="ql-script" value="super"></button>
+
+            </div>
+            <div id="editor"></div> -->
 
             <div class="info">
                 <select class="select" [(ngModel)]="data.idTipo" type="text">
                     <option value="{{listaL.id}}" *ngFor="let listaL of langlist">{{listaL.Nombre}}</option>
                 </select>
             </div>
-        
+
             <div class="info">
-                <button *ngIf="!exist" pButton type="button" style="color: lime; backdrop-filter: brightness(55%);" label="Cargar" class="p-button-text" (click)="cargar(data.title, data.content, data.idTipo)"></button>
-                <button *ngIf="exist" pButton type="button" style="color: lime; backdrop-filter: brightness(55%);" label="Editar" class="p-button-text" (click)="editar(data.id, data.title, data.content, data.idTipo)"></button>
+                <button *ngIf="!exist" pButton type="button" style="color: lime; backdrop-filter: brightness(55%);"
+                    label="Cargar" class="p-button-text"
+                    (click)="cargar(data.title, data.content, data.idTipo)"></button>
+                <button *ngIf="exist" pButton type="button" style="color: lime; backdrop-filter: brightness(55%);"
+                    label="Editar" class="p-button-text"
+                    (click)="editar(data.id, data.title, data.content, data.idTipo)"></button>
                 <!-- <button type="button" pButton class="p-button-text" (click)="reloadPage()" icon="pi pi-th-large"
                 style="color: red; backdrop-filter: brightness(55%);"
                 label="Cancelar"></button> -->

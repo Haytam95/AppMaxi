@@ -18,7 +18,7 @@
         <div>
             <ul class="ul">
                 <button type="button" pButton class="p-button-text" (click)="displayAdd = true" icon="pi pi-plus"
-                    style="color: lime;" label="Agregar Lenguaje"></button>
+                    style="color: lime;" label="Agregar Categoría"></button>
                 <li *ngFor="let lang of langlist" style="list-style: none;">
                     <button type="button" class="p-button-text" style="color: yellow;" pButton
                         [routerLink]="'/content/' + lang.id" routerLinkActive="active" [label]="lang?.Nombre">
