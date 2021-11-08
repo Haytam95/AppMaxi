@@ -1,38 +1,35 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { DataListService } from '../data-list.service';
 import { Router } from '@angular/router';
-import * as Quill from 'quill';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-carga',
   templateUrl: './carga.component.html',
   styleUrls: ['./carga.component.css']
 })
-export class CargaComponent implements OnInit, AfterViewInit {
+export class CargaComponent implements OnInit {
 
   public titulo: string;
   public content: string;
   public selectedLanguaje;
   public langlist;
-  public toolbarOptions = [['bold', 'italic'], ['link', 'image']];
+  public uploadPercent: Observable<number>;
+  public downloadURL: Observable<string | null>;
+  public photo: string;
 
   @Input() public data;
   @Input() public exist;
-  constructor(private firestore: AngularFirestore, private datalist: DataListService, private router: Router) { }
+  constructor(
+    private firestore: AngularFirestore, private datalist: DataListService, private router: Router, private storage: AngularFireStorage
+  ) { }
 
   ngOnInit(): void {
     this.datalist.getDataLang().subscribe((resolve) => {
       this.langlist = resolve;
-    });
-  }
-
-  ngAfterViewInit(): void {
-    const quill = new Quill('#editor', {
-      modules: {
-        toolbar: '#toolbar'
-      },
-      theme: 'snow'
     });
   }
 
@@ -42,7 +39,8 @@ export class CargaComponent implements OnInit, AfterViewInit {
         .add({
           titulo: title,
           content: cont,
-          id_tipo: idTipo
+          id_tipo: idTipo,
+          photo: this.downloadURL
         });
       alert('Se ha cargado la data correctamente!');
     }
@@ -56,11 +54,15 @@ export class CargaComponent implements OnInit, AfterViewInit {
     }
   }
 
-  public onBasicUpload(event): void {
-  }
-
-  public testPage(): void {
-    console.log('Funciona!');
+  public uploadFile(event): void {
+    const file = event.target.files[0];
+    const filePath = 'photos/' + this.photo;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+    this.uploadPercent = task.percentageChanges();
+    task.snapshotChanges().pipe(
+      finalize(() => this.downloadURL = fileRef.getDownloadURL())
+    ).subscribe();
   }
 
   public reloadPage(): void {

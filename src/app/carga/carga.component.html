@@ -6,33 +6,20 @@
             </div>
 
             <div class="info">
-                <p-editor  placeholder="Ingrese contenido" [(ngModel)]="data.content"
-                    [style]="{'height':'320px'}">
-                    <!-- <span class="ql-formats">
-                        <button class="ql-link" aria-label="Insert Link" type="button"></button>
-                        <button class="ql-image" aria-label="Insert Image" (click)="testPage()" type="button"></button>
-                        <button class="ql-code-block" aria-label="Insert Code Block" type="button"></button>
-                    </span> -->
+                <p-editor [(ngModel)]="data.content" [style]="{'height':'320px'}">
                 </p-editor>
             </div>
 
-            <!-- <div id="toolbar">
-                Add font size dropdown 
-                <select class="ql-size">
-                    <option value="small"></option>
-                     Note a missing, thus falsy value, is used to reset to default 
-                    <option selected></option>
-                    <option value="large"></option>
-                    <option value="huge"></option>
-                </select>
-                 Add a bold button 
-                <button class="ql-bold"></button>
-                 Add subscript and superscript buttons 
-                <button class="ql-script" value="sub"></button>
-                <button class="ql-script" value="super"></button>
+            <div class="info">
+                <div>
+                    <input required placeholder="Nombre de la imagen" [(ngModel)]="photo" />
+                </div>
 
+                <div>
+                    <input *ngIf="photo" type="file" (change)="uploadFile($event)" />
+                </div>
+                <img [src]="downloadURL | async" />
             </div>
-            <div id="editor"></div> -->
 
             <div class="info">
                 <select class="select" [(ngModel)]="data.idTipo" type="text">
