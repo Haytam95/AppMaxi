@@ -59,3 +59,19 @@ h1 {
     width: 100%;
     position: fixed
   }
+
+.foto {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-size: cover;
+  justify-content: center;
+  height: 40%;
+  width: 40%;
+}
+
+.centrado {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}

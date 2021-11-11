@@ -35,6 +35,7 @@ export class AuthenticationService {
       .then(res => {
         alert('Registrado correctamente!');
         console.log('You are Successfully signed up!', res);
+        this.router.navigateByUrl('/login');
       })
       .catch(error => {
         alert('Algo salio mal!');

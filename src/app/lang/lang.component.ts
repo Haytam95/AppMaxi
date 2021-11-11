@@ -15,6 +15,7 @@ export class LangComponent implements OnInit {
   public currentContent = '';
   public currentId: string;
   public currentIdTipo: string;
+  public currentPhoto: string;
   public buttons = false;
   public exist = false;
   public updateInfo;
@@ -30,12 +31,13 @@ export class LangComponent implements OnInit {
     });
   }
 
-  public showInfo(id, title, content, idTipo): void {
+  public showInfo(id, title, content, idTipo, photo): void {
     this.currentId = id;
     this.currentTitle = title;
     this.currentContent = content;
     this.currentIdTipo = idTipo;
-    this.currentData = { id, title, content, idTipo };
+    this.currentPhoto = photo;
+    this.currentData = { id, title, content, idTipo, photo };
     this.buttons = true;
     this.exist = true;
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-cargalang',
@@ -9,10 +10,14 @@ import { AngularFirestore } from '@angular/fire/firestore';
 export class CargalangComponent implements OnInit {
 
   public lang: string;
+  public datauser;
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore, private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.authenticationService.getUserData().subscribe((resolve) => {
+      this.datauser = resolve;
+    });
   }
 
   public cargar(): void {
@@ -20,6 +25,7 @@ export class CargalangComponent implements OnInit {
       this.firestore.collection('Tipo')
         .add({
           Nombre: this.lang,
+          email: this.datauser.email
         });
       alert('Se ha cargado el lenguaje correctamente!');
     }

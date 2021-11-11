@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataListService } from '../data-list.service';
 import { AuthenticationService } from '../authentication.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-content',
@@ -15,21 +17,28 @@ export class ContentComponent implements OnInit {
   public displayAdd: boolean;
   public displayInfo: boolean;
   public displayProfile: boolean;
-  public datauser;
   public langlist;
+  public data;
+  public email = '';
+  public userData: Observable<firebase.User>;
 
-  constructor(private datalist: DataListService, private authenticationService: AuthenticationService) { }
+  constructor(private datalist: DataListService, private authenticationService: AuthenticationService,
+    private auth: AngularFireAuth
+  ) {}
 
   ngOnInit(): void {
-    this.datalist.getDataLang().subscribe((resolve) => {
-      this.langlist = resolve;
-    });
-    this.authenticationService.getUserData().subscribe((resolve) => {
-      this.datauser = resolve;
+    const observer = this.auth.user.subscribe((user) => {
+      this.email = user.email;
+      this.datalist.getDataLang(this.email).subscribe((resolve) => {
+        this.langlist = resolve;
+      });
+    }, () => {
+    }, () => {
+      observer.unsubscribe();
     });
   }
 
-  public logOut() {
+  public logOut(): void {
     if (confirm('Estas Seguro?')) {
       this.authenticationService.SignOut();
     }

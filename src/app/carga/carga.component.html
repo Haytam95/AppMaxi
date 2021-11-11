@@ -12,13 +12,9 @@
 
             <div class="info">
                 <div>
-                    <input required placeholder="Nombre de la imagen" [(ngModel)]="photo" />
+                    <input style="color: white;" type="file" (change)="uploadHandler($event)" />
+                    <div style="display: flex; justify-content: center; color: white;" *ngIf="uploadPercent">{{ uploadPercent | async }}%</div>
                 </div>
-
-                <div>
-                    <input *ngIf="photo" type="file" (change)="uploadFile($event)" />
-                </div>
-                <img [src]="downloadURL | async" />
             </div>
 
             <div class="info">

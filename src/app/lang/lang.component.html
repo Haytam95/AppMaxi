@@ -18,23 +18,28 @@
                     <li style="list-style: none; display: flex; margin: auto; justify-content: center; flex-direction: column;"
                         *ngFor="let data of datas">
                         <button style="color: gold;" type="button" class="p-button-text" pButton [label]="data?.titulo"
-                            (click)="showInfo(data.id, data.titulo, data.content, data.id_tipo)"></button>
+                            (click)="showInfo(data.id, data.titulo, data.content, data.id_tipo, data.photo)"></button>
                     </li>
                 </ul>
             </div>
         </p-scrollPanel>
     </div>
 
-    <div class="allText" style="text-align: center; width: 100vmax;  backdrop-filter: brightness(55%);">
+    <div class="allText" style="text-align: center; width: 85vmax;  backdrop-filter: brightness(55%);">
         <div *ngIf="buttons" style="display: flex; justify-content: space-around; margin-top: 3%;">
             <button pButton pRipple type="button" label="Editar" class="p-button-warning p-button-text"
-                (click)="displayInfo = true"
-                icon="pi pi-th-large"></button>
+                (click)="displayInfo = true" icon="pi pi-th-large"></button>
             <button pButton pRipple type="button" label="Borrar" icon="pi pi-trash"
                 class="p-button-danger p-button-text" (click)="borrar()"></button>
         </div>
         <h1 [innerHTML]="currentTitle | safe: 'html'"></h1>
         <p [innerHTML]="currentContent | safe: 'html'"></p>
+
+        <div class="centrado">
+            <div class="foto">
+                <img src={{currentPhoto}} />
+            </div>
+        </div>
     </div>
 
 </div>

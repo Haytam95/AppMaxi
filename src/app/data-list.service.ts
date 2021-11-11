@@ -13,30 +13,30 @@ export interface Data {
 export interface Lang {
   nombre: string;
   id: string;
+  email: string;
 }
-
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class DataListService {
-  
+
   constructor(private firestore: AngularFirestore, private router: Router) { }
 
-  public getDataLang(): Observable<Lang[]> {
-    return this.firestore.collection<Lang>('Tipo').valueChanges({ idField: 'id' });
+  public getDataLang(email: string): Observable<Lang[]> {
+    return this.firestore.collection<Lang>('Tipo', ref => ref.where('email', '==', email)).valueChanges({ idField: 'id' });
   }
 
   public getDataIndex(id_tipo: string): Observable<Data[]> {
     return this.firestore.collection<Data>('Datos', ref => ref.where('id_tipo', '==', id_tipo)).valueChanges({ idField: 'id' });
   }
 
-  public getDataPreview(id_tipo: string): Observable<Data[]> {
+ /*  public getDataPreview(id_tipo: string): Observable<Data[]> {
     return this.firestore.collection<Data>('Datos', ref => ref.where('__name__', '==', id_tipo)).valueChanges({ idField: 'id' });
-  }
+  } */
 
-  public deleteData(id: string) {
+  public deleteData(id: string): void {
     this.firestore.doc('Datos/' + id).delete();
     this.router.navigateByUrl('content');
   }

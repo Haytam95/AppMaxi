@@ -4,7 +4,8 @@ import { DataListService } from '../data-list.service';
 import { Router } from '@angular/router';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-carga',
@@ -19,17 +20,25 @@ export class CargaComponent implements OnInit {
   public langlist;
   public uploadPercent: Observable<number>;
   public downloadURL: Observable<string | null>;
-  public photo: string;
+  public email;
 
   @Input() public data;
   @Input() public exist;
   constructor(
-    private firestore: AngularFirestore, private datalist: DataListService, private router: Router, private storage: AngularFireStorage
-  ) { }
+    private auth: AngularFireAuth, private firestore: AngularFirestore, private datalist: DataListService,
+    private router: Router, private storage: AngularFireStorage,
+  ) {
+   }
 
   ngOnInit(): void {
-    this.datalist.getDataLang().subscribe((resolve) => {
-      this.langlist = resolve;
+    const observer = this.auth.user.subscribe((user) => {
+      this.email = user.email;
+      this.datalist.getDataLang(this.email).subscribe((resolve) => {
+        this.langlist = resolve;
+      });
+    }, () => {
+    }, () => {
+      observer.unsubscribe();
     });
   }
 
@@ -40,29 +49,45 @@ export class CargaComponent implements OnInit {
           titulo: title,
           content: cont,
           id_tipo: idTipo,
-          photo: this.downloadURL
+          photo: this.data.photo
         });
       alert('Se ha cargado la data correctamente!');
     }
   }
 
-  public editar(id, titulo, content, id_tipo): void {
+  public editar(id, title, cont, idTipo): void {
     if (confirm('Estas Seguro?')) {
-      this.firestore.doc('Datos/' + id).update({ titulo, content, id_tipo });
+      this.firestore.doc('Datos/' + id).update({
+        titulo: title,
+        content: cont,
+        id_tipo: idTipo,
+        photo: this.data.photo
+      });
       this.reloadPage();
       alert('Se han editado correctamente los datos!');
     }
   }
 
-  public uploadFile(event): void {
-    const file = event.target.files[0];
-    const filePath = 'photos/' + this.photo;
-    const fileRef = this.storage.ref(filePath);
-    const task = this.storage.upload(filePath, file);
-    this.uploadPercent = task.percentageChanges();
-    task.snapshotChanges().pipe(
-      finalize(() => this.downloadURL = fileRef.getDownloadURL())
-    ).subscribe();
+  public uploadHandler(event): void {
+    const observer = this.auth.user.subscribe((user) => {
+      const file = event.target.files[0];
+      const dateNow = Date.now();
+      const filePath = user.email + '/' + dateNow;
+      const fileRef = this.storage.ref(filePath);
+      const uploadTask = this.storage.upload(filePath, file);
+      this.uploadPercent = uploadTask.percentageChanges();
+      const observer2 = uploadTask.snapshotChanges().subscribe(() => {
+      }, () => {
+      }, () => {
+        observer2.unsubscribe();
+        const observer3 = fileRef.getDownloadURL().subscribe(data => {
+          this.data.photo = data;
+        });
+      });
+    }, () => {
+    }, () => {
+      observer.unsubscribe();
+    });
   }
 
   public reloadPage(): void {
